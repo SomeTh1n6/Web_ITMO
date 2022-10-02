@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web-Lab-1</title>
+
+    <style>
+
+        body{
+            background: #FFFAFA;
+        }
+
+        table.header{
+            width: 100%;
+            background: #E6E6FA;
+            font-family: sans-serif;
+        }
+
+        table#result-table{
+            width: 50%;
+            margin: auto;
+            background: #FFFFE0;
+
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 3px;
+            font-size: medium;
+            font-family: "Times New Roman", Times, serif;
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        #graph{
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .left-column{
+            float: left;
+            padding: 100px;
+            background-color: #87CEFA;
+        }
+
+        .inputContainer{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table class="header">
+        <tr>
+            <td class="rightHeaderPart">
+                <h2>Вариант № 16216</h2>
+                <h3>Миллер Александр, P33212</h3>
+            </td>
+        </tr>
+
+    </table>
+
+    <div class="left-column">
+        <img class="image" src="areal.png" id="graph" alt="Фото графика">
+
+        <table id="inputX" class="inputContainer">
+            <td>X:</td>
+            <td class="inputCell" name="xRadio">
+                <label>
+                    <input type="radio" name="x" value="-4">-4
+                </label>
+                <label>
+                    <input type="radio" name="x" value="-3">-3
+                </label>
+                <label>
+                    <input type="radio" name="x" value="-2">-2
+                </label>
+                <label>
+                        <input type="radio" name="x" value="-1">-1
+                </label>
+                <label>
+                    <input type="radio" name="x" value="0">0
+                </label>
+                <label>
+                    <input type="radio" name="x" value="1">1
+                </label>
+                <label>
+                    <input type="radio" name="x" value="2">2
+                </label>
+                <label>
+                    <input type="radio" name="x" value="3">3
+                </label>
+                <label>
+                    <input type="radio" name="x" value="4">4
+                </label>
+            </td>
+
+            <table id="inputY" class="inputContainer">
+                <td>Y:</td>
+                <td class="inputCell">
+                    <input type="text" name="Y" id="input2">
+                </td>
+            </table>
+            <table id="inputR" class="inputContainer">
+                <td>R:</td>
+                <td class="inputCell">
+                    <input class="r-button" type="button" name="r" onclick="chooseR(this)" value="1">
+                    <input class="r-button" type="button" name="r" onclick="chooseR(this)" value="1.5">
+                    <input class="r-button" type="button" name="r" onclick="chooseR(this)" value="2">
+                    <input class="r-button" type="button" name="r" onclick="chooseR(this)" value="2.5">
+                    <input class="r-button" type="button" name="r" onclick="chooseR(this)" value="3">
+                </td>
+
+                <tr>
+                    <td colspan="100%" id="buttonContainer">
+                        <button class="submit-button" type="submit" onclick="submit()">Проверить</button>
+                    </td>
+                </tr>
+            </table>
+        </table>
+    </div>
+
+
+
+    <table id="result-table">
+        <tr class="table-header">
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Локальное время</th>
+            <th>Время исполнения</th>
+            <th>Результат</th>
+        </tr>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
