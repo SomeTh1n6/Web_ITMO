@@ -2,6 +2,7 @@ if (localStorage.tab === undefined){
     localStorage.setItem("tab", "");
 }
 
+/*
 window.onload = (event) => {
     if (localStorage.tab.length > 0) {
         localStorage.tab.split('|').forEach(function (PHP_RESPONSE) {
@@ -19,6 +20,7 @@ window.onload = (event) => {
         });
     }
 };
+*/
 
 let x, y, r;
 let errorMessage = "";
