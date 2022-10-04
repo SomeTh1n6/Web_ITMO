@@ -2,26 +2,6 @@ if (localStorage.tab === undefined){
     localStorage.setItem("tab", "");
 }
 
-/*
-window.onload = (event) => {
-    if (localStorage.tab.length > 0) {
-        localStorage.tab.split('|').forEach(function (PHP_RESPONSE) {
-            if (PHP_RESPONSE !== ""){
-                let result = JSON.parse(PHP_RESPONSE);
-                let newRow = result.isBlueAreaHit ? '<tr class="hit-yes">' : '<tr class="hit-no">';
-                newRow += '<td style="text-align:center">' + result.x + '</td>';
-                newRow += '<td style="text-align:center">' + result.y + '</td>';
-                newRow += '<td style="text-align:center">' + result.r + '</td>';
-                newRow += '<td style="text-align:center">' + result.userTime + '</td>';
-                newRow += '<td style="text-align:center">' + result.execTime + '</td>';
-                newRow += '<td style="text-align:center">' + (result.isBlueAreaHit ? "Да" : "Нет") + '</td>';
-                $('#result-table tr:first').after(newRow);
-            }
-        });
-    }
-};
-*/
-
 let x, y, r;
 let errorMessage = "";
 let leftBorderY = -5;
