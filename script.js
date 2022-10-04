@@ -1,3 +1,7 @@
+let errorX = document.getElementById("ErrorX");
+let errorY = document.getElementById("ErrorY");
+let errorR = document.getElementById("ErrorR");
+
 if (localStorage.tab === undefined){
     localStorage.setItem("tab", "");
 }
@@ -11,11 +15,11 @@ let rightBorderY = 5;
 function chooseR(element) {
     r = element.value;
 
-    [...document.getElementsByClassName("r-radio")].forEach(function (btn) {
+    [...document.getElementsByClassName("r-button")].forEach(function (btn) {
+        console.log("RRR")
         btn.style.transform = "";
     });
-
-    element.style.transform = "scale(1.1)";
+    element.style.transform = "scale(1.2)";
 }
 
 
@@ -33,62 +37,68 @@ function checkOccurrenceY(value){
     return value >= leftBorderY && value <= rightBorderY;
 }
 
-
-function validateY(){
-    y = document.querySelector("input[name=Y]").value.replace(",", ".");
-    if (y === undefined) {
-        addToErrorMessage("Поле пустое");
-        return false;
-    }
-    if (!isNumber(y)) {
-        addToErrorMessage("Y должен быть числом");
-        return false;
-    }
-    if (!checkOccurrenceY(y)){
-        addToErrorMessage("Y должен быть в диапазоне: от -5 до 5");
-        return false;
-    }
-    return true;
-}
-
-
-function validateR(){
-    if (r === undefined) {
-        addToErrorMessage("R должен быть выбран");
-        console.log("check r");
-        return false;
-    }
-    r = parseInt(r);
-    return true;
-}
-
 function validateX(){
     let xButton = document.querySelectorAll("input[name=x]");
 
     xButton.forEach(function (button){
         console.log(button.value);
         if (button.checked){
+
             x = button.value;
             console.log("success");
         }
     })
 
     if (x === undefined) {
-        addToErrorMessage("X должен быть выбран");
+        errorX.textContent = "X должен быть выбран";
         console.log("check X");
         return false;
     }
+    errorX.textContent = "";
     x = parseFloat(x);
     return true;
 }
 
 
+function validateY(){
+    y = document.querySelector("input[name=Y]").value.replace(",", ".");
+    if (y === undefined || y === "") {
+        errorY.textContent = "Поле Y пустое";
+        return false;
+    }
+    if (!isNumber(y)) {
+        errorY.textContent = "Y должен быть числом";
+        return false;
+    }
+    if (!checkOccurrenceY(y)){
+        errorY.textContent = "Y должен быть в диапазоне: от -5 до 5";
+        return false;
+    }
+    errorY.textContent = "";
+    return true;
+}
+
+
+function validateR(){
+    if (r === undefined) {
+        errorR.textContent = "R должен быть выбран"
+        return false;
+    }
+    r = parseFloat(r);
+    errorR.textContent = "";
+
+    return true;
+}
+
+
+
 function submit() {
+
     if (validateX() && validateR() && validateY()) {
         $.get("main.php", {
             'x' : parseInt(x),
             'y' : parseFloat(y),
-            'r' : parseInt(r),
+            'r' : parseFloat(r),
             'timezone' : new Date().getTimezoneOffset()
         }).done(function(PHP_RESPONSE){
             let result = JSON.parse(PHP_RESPONSE);
@@ -114,7 +124,6 @@ function submit() {
     }
 
     if (!(errorMessage === "")) {
-        alert(errorMessage);
         errorMessage = "";
     }
 }
