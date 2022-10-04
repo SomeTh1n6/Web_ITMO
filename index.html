@@ -45,8 +45,25 @@
             background-color: #87CEFA;
         }
 
+        #input2{
+            width: 90%;
+        }
+
         .inputContainer{
             margin-top: 10px;
+            width: 100%;
+        }
+
+        button#submit{
+            position: relative;
+            z-index: 1;
+            color: black;
+            font-size: 100%;
+            font-weight: 700;
+        }
+
+        .Error{
+            color: red;
         }
     </style>
 </head>
@@ -95,6 +112,7 @@
                     <input type="radio" name="x" value="4">4
                 </label>
             </td>
+            <p class="Error" id="ErrorX"></p>
 
             <table id="inputY" class="inputContainer">
                 <td>Y:</td>
@@ -102,6 +120,8 @@
                     <input type="text" name="Y" id="input2">
                 </td>
             </table>
+            <p class="Error" id="ErrorY"></p>
+
             <table id="inputR" class="inputContainer">
                 <td>R:</td>
                 <td class="inputCell">
@@ -114,10 +134,11 @@
 
                 <tr>
                     <td colspan="100%" id="buttonContainer">
-                        <button class="submit-button" type="submit" onclick="submit()">Проверить</button>
+                        <button id="submit" class="submit-button" type="submit" onclick="submit()">Проверить</button>
                     </td>
                 </tr>
             </table>
+            <p class="Error" id="ErrorR"></p>
         </table>
     </div>
 
